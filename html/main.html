@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>主页面</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="image/png" href="i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <!-- Amaze UI CSS -->
+    <link rel="stylesheet" href="../assets/css/amazeui.css">
+    <link rel="stylesheet" href="../assets/css/sl.css">
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/amazeui.js"></script>
+    <style>
+
+    </style>
+</head>
+<body class="sl-background-color-white" style="height: 100%">
+
+<div class="am-g sl-border-bottom-1px-solid-white sl-font-color-white sl-font-size-14px" >
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6 sl-flex-column-center-center sl-background-color-fcc sl-border-right-1px-solid-white" style="height: 100%;">
+        <i class="am-icon-user-secret sl-icon-color-FF9966 am-icon-md"></i>
+        <span class="sl-font-color-FF6666 sl-margin-top-5px">科室会</span>
+    </div>
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6 sl-flex-column-center-center sl-background-color-fcc" style="height: 100%">
+        <i class="am-icon-home  sl-icon-color-FF9966 am-icon-md"></i>
+        <span class="sl-font-color-FF6666 sl-margin-top-5px">学术会议</span>
+    </div>
+</div>
+<div class="am-g sl-background-color-F1F1F1 sl-border-bottom-1px-solid-white sl-font-size-14px" >
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6 sl-flex-column-center-center sl-background-color-fcc sl-border-right-1px-solid-white" style="height: 100%">
+        <i class="am-icon-pencil sl-icon-color-FF9966 am-icon-md"></i>
+        <span class="sl-font-color-FF6666 sl-margin-top-5px">病例收集</span>
+    </div>
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6 sl-flex-column-center-center sl-background-color-fcc" style="height: 100%">
+        <i class="am-icon-hospital-o sl-icon-color-FF9966 am-icon-md"></i>
+        <span class="sl-font-color-FF6666 sl-margin-top-5px">医院管理培训</span>
+    </div>
+</div>
+<div class="am-g sl-background-color-F1F1F1 sl-border-bottom-1px-solid-white sl-font-size-14px" >
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6 sl-flex-column-center-center sl-background-color-fcc sl-border-right-1px-solid-white" style="height: 100%">
+        <i class="am-icon-spoon sl-icon-color-FF9966 am-icon-md"></i>
+        <span class="sl-font-color-FF6666 sl-margin-top-5px">专业活动</span>
+    </div>
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6 sl-flex-column-center-center sl-background-color-fcc" style="height: 100%">
+        <i class="am-icon-user sl-icon-color-FF9966 am-icon-md"></i>
+        <a class="sl-font-color-FF6666 sl-margin-top-5px " href="my.html">我的</a>
+    </div>
+</div>
+
+
+
+</body>
+<script>
+    $(document).ready(function () {
+        var h = window.innerHeight;
+        var y = window.pageYOffset;
+        var x=window.pageXOffset;
+        console.log("H;"+h+"y:"+y+"x:"+x);
+        $(".am-g").css("height",h/3+"px");
+    })
+</script>
+</html>
