@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>我的页面</title>
+    <title>登陆</title>
 
     <!-- Set render engine for 360 browser -->
     <meta name="renderer" content="webkit">
@@ -35,35 +35,48 @@
     <link rel="stylesheet" href="../assets/css/sl.css">
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/amazeui.js"></script>
-    <style>
 
-    </style>
 </head>
-<body >
-<div class="am-g sl-flex-row-center-space-between sl-background-color-white sl-margin-top-10px sl-padding-5px-0px">
-    <div class="am-u-sm-4 am-u-md-4 am-u-lg-4 sl-flex-row-center-center">
-        <img src="../assets/images/car.png" alt="" style="height: 70%; width: 70%;" >
-    </div>
-    <div class="am-u-sm-8 am-u-md-8 am-u-lg-8 sl-flex-column-flex-start-space-between sl-font-size-14px" style="height: 100%;">
-            <span class="sl-margin-bottom-5px"><span>姓名：</span>小明</span>
-            <span><span>公司：</span>支付宝有限责任公司</span>
-    </div>
-</div>
-<div class="am-g sl-background-color-white sl-margin-top-10px sl-padding-5px-0px" id="user-info">
-    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6">
-        <i class="am-icon-user-secret sl-margin-left-5px"></i>
-        <span class="sl-margin-left-5px">个人信息</span>
-    </div>
-    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6 sl-flex-row-center-flex-end">
-        <i class="am-icon-arrow-right sl-icon-color-CACACA"></i>
-    </div>
-</div>
+<body>
+<div class="am-g sl-border-bottom-1px-solid-D3D3D3">
+    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12 sl-background-color-white">
+        <a href="JavaScript:history.go(-1)">
+            <i class="am-icon-close am-icon-md sl-icon-color-CACACA" style="font-weight:bolder"></i>
+        </a>
 
+
+    </div>
+</div>
+<div class="sl-flex-row-center-center sl-margin-20px-0px">
+    <img src="../assets/images/car.png" style="width: 50%; height: 50%;; " alt="">
+</div>
+<form action="action" method="POST" role="form" class="am-form">
+    <div class="am-input-group sl-margin-10px-20px">
+        <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
+        <input type="text" class="am-form-field" placeholder="Username">
+    </div>
+
+    <div class="am-input-group sl-margin-10px-20px sl-m">
+        <span class="am-input-group-label"><i class="am-icon-lock am-icon-fw"></i></span>
+        <input type="text" class="am-form-field" placeholder="Password">
+    </div>
+    <div class="sl-flex-row-center-center   ">
+        <button type="submit" class="am-btn sl-background-color-FFCC00 sl-font-color-white sl-border-radius-1000px" style="width: 60%" id="login">登&nbsp;&nbsp;陆</button>
+    </div>
+</form>
+<div class="am-g sl-font-color-gray sl-font-size-14px sl-margin-top-10px">
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6 sl-flex-row-center-flex-end">
+       <a href="forget-password.html">忘记密码</a>
+    </div>
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6">
+        <a href="quick-login.html">快速注册</a>
+    </div>
+</div>
 
 </body>
 <script>
-    $("#user-info").click(function () {
-        window.location.href="user-info.html";
+    $('#login').click(function () {
+        window.history.back(-1);
     })
 </script>
 </html>
