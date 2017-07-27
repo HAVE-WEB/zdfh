@@ -51,7 +51,7 @@
         <span class="sl-font-color-FF6666 sl-margin-top-5px">学术会议</span>
     </div>
 </div>
-<div class="am-g sl-background-color-F1F1F1 sl-border-bottom-1px-solid-white sl-font-size-14px" >
+<div class="am-g sl-background-color-F1F1F1 sl-border-bottom-1px-solid-white sl-font-size-14px" onclick="goNext(2)">
     <div class="am-u-sm-6 am-u-md-6 am-u-lg-6 sl-flex-column-center-center sl-background-color-fcc sl-border-right-1px-solid-white" style="height: 100%">
         <i class="am-icon-pencil sl-icon-color-FF9966 am-icon-md"></i>
         <span class="sl-font-color-FF6666 sl-margin-top-5px">病例收集</span>
@@ -66,7 +66,7 @@
         <i class="am-icon-spoon sl-icon-color-FF9966 am-icon-md"></i>
         <span class="sl-font-color-FF6666 sl-margin-top-5px">专业活动</span>
     </div>
-    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6 sl-flex-column-center-center sl-background-color-fcc" style="height: 100%" id="my">
+    <div class="am-u-sm-6 am-u-md-6 am-u-lg-6 sl-flex-column-center-center sl-background-color-fcc" style="height: 100%" id="my" onclick="goNext(5)">
         <i class="am-icon-user sl-icon-color-FF9966 am-icon-md"></i>
         <span class="sl-font-color-FF6666 sl-margin-top-5px " >我的</span>
     </div>
@@ -86,25 +86,47 @@
 //    $("#my").click(function () {
 //        window.location.href="my.html";
 //    })
-    $("body").click(function () {
-        $(".am-u-sm-6").each(function (i,domEle) {
-            console.log("v:"+domEle.nodeName+",i:"+i)
-            if(i == 0){
-                window.location.href="my.html";
-            }else if(i == 1){
-                window.location.href="my.html";
-            }else if(i == 2){
-                window.location.href="my.html";
-            }else if(i == 3){
-                window.location.href="my.html";
-            }else if(i == 4){
-                window.location.href="my.html";
-            }else if(i == 5){
-                window.location.href="my.html";
-            }
+    function goNext(i) {
+        if(i == 0){
+            window.location.href="my.html";
+        }else if(i == 1){
+            window.location.href="my.html";
+        }else if(i == 2){
+            window.location.href="caseCollectList.html";
+        }else if(i == 3){
+            window.location.href="my.html";
+        }else if(i == 4){
+            window.location.href="my.html";
+        }else if(i == 5){
+            window.location.href="my.html";
+        }
+    }
 
-        })
-    })
+
+
+//    $("body").click(function () {
+//        alert("11111");
+//        var len = $(".am-u-sm-6").length;
+//       alert(len)
+//        $(".am-u-sm-6").each(function (i,domEle) {
+//            alert("22222");
+//            console.log("v:"+domEle.nodeName+",i:"+i)
+//            if(i == 0){
+//                window.location.href="my.html";
+//            }else if(i == 1){
+//                window.location.href="my.html";
+//            }else if(i == 2){
+//                window.location.href="caseCollectList.html";
+//            }else if(i == 3){
+//                window.location.href="caseCollectList.html";
+//            }else if(i == 4){
+//                window.location.href="my.html";
+//            }else if(i == 5){
+//                window.location.href="my.html";
+//            }
+//
+//        })
+//    })
 
 </script>
 </html>

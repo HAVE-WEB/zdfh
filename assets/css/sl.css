@@ -39,6 +39,15 @@ body{
 .sl-font-color-CC9900{
     color: #CC9900;
 }
+ .sl-font-color-FF6666{
+     color: #FF6666;
+ }
+ .sl-width-percent100{
+     width:100%;
+ }
+.sl-height-percent100{
+    height:100%;
+}
 .sl-flex-row-center-flex-start{
     display:flex;
     align-items: center;
@@ -81,6 +90,9 @@ body{
 }
 .sl-margin-left-5px{
     margin-left: 5px;
+}
+.sl-margin-left-10px{
+    margin-left: 10px;
 }
 .sl-margin-right{
     margin-right: 10px;
@@ -237,6 +249,9 @@ body{
 }
 .sl-background-color-FFCC00{
     background-color: #FFCC00;
+}
+.sl-background-color-FFCCCC{
+    background-color: #FFCCCC;
 }
 .sl-background-color-F1F1F1{
     background-color: #F1F1F1;
