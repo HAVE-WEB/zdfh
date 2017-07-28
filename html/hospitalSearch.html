@@ -1,0 +1,170 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>医院查询</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="image/png" href="i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <!-- Amaze UI CSS -->
+    <link rel="stylesheet" href="../assets/css/amazeui.css">
+    <link rel="stylesheet" href="../assets/css/sl.css">
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/amazeui.js"></script>
+    <style>
+
+    </style>
+</head>
+<body class="sl-background-color-white" style="height: 100%">
+<div class="am-g sl-flex-row-center-space-between sl-background-color-F1F1F1">
+    <div class="am-u-sm-9 am-u-md-9 am-u-lg-3">
+        查询医院
+    </div>
+    <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-column-center-center">
+        <button type="submit" class="am-btn am-btn-default am-btn-warning"  id="button">确认</button>
+    </div>
+</div>
+
+<div class="am-g sl-border-bottom-1px-solid-white sl-background-color-F1F1F1 sl-padding-top-10px sl-flex-row-center-space-between" >
+    <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 " >
+        <div class="sl-flex-row-center-flex-start sl-background-color-white">
+            <i class="am-icon-search sl-icon-color-CACACA" style="width: 10%;"></i>
+            <input type="text" placeholder="按医院名称搜索" id="search" style="width: 80%;" oninput="inputVal()">
+            <i class="am-icon-close am-icon-sm sl-icon-color-CACACA" style="display: none; width: 10%;" id="clearVal"></i>
+        </div>
+    </div>
+    <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-column-center-center " style="height: 100%">
+        <button type="submit" class="am-btn am-btn-default am-btn-warning"  >查询</button>
+    </div>
+</div>
+<ul class="am-list sl-margin-10px-10px">
+    <li class="sl-flex-row-center-space-between sl-padding-top-10px"  style="display: flex;"><span> 或深或浅，盖上布，以为不存在。</span><input type="radio" name="radio" value="option1"></li>
+    <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >自己走不出来，别人也闯不进去。</span><input type="radio" name="radio" value="option1"></li>
+    <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span > 或深或浅，盖上布，以为不存在。</span><input type="radio" name="radio" value="option1"></li>
+    <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >自己走不出来，别人也闯不进去。</span><input type="radio" name="radio" value="option1"></li>
+    <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span > 或深或浅，盖上布，以为不存在。</span><input type="radio" name="radio" value="option1"></li>
+    <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >自己走不出来，别人也闯不进去。</span><input type="radio" name="radio" value="option1"></li>
+</ul>
+
+
+</body>
+<script>
+//    $(document).ready(function () {
+//        var h = window.innerHeight;
+//        var y = window.pageYOffset;
+//        var x=window.pageXOffset;
+//        console.log("H;"+h+"y:"+y+"x:"+x);
+//        $(".am-g").css("height",h/3+"px");
+//    })
+//    $("#my").click(function () {
+//        window.location.href="my.html";
+//    })
+    function goNext(i) {
+        if(i == 0){
+            window.location.href="my.html";
+        }else if(i == 1){
+            window.location.href="my.html";
+        }else if(i == 2){
+            window.location.href="caseCollectList.html";
+        }else if(i == 3){
+            window.location.href="my.html";
+        }else if(i == 4){
+            window.location.href="my.html";
+        }else if(i == 5){
+            window.location.href="my.html";
+        }
+    }
+
+//    $("#search").onpropertychange(function () {
+//        console.log("start")
+//        console.log("val:"+$(this).val())
+//        ;
+//        if($(this).val() !== ""){
+//            $(this).next().css("display","block");
+//        }else{
+//            $(this).next().css("display","none");
+//        }
+//        console.log("end")
+//    })
+    function inputVal() {
+        console.log("start")
+
+        if($("#search").val() !== ""){
+            $("#search").next().css("display","block");
+        }else{
+            $("#search").next().css("display","none");
+        }
+        console.log("end")
+    }
+    $("#clearVal").click(function () {
+        $("#search").val("");
+        $(this).css("display","none");
+    })
+$(".am-list li").click(function () {
+    $(this).find("input[type=radio]").attr("checked","checked");
+})
+$("#button").click(function () {
+
+    $(".am-list input").each(function (i ,v) {
+        if($(this).attr("checked") == "checked"){
+            window.history.go(-1)
+            return false
+        }else {
+            if(i == $(".am-list input").length-1){
+                alert("请选择一条数据");
+            }
+        }
+    })
+})
+
+
+//    $("body").click(function () {
+//        alert("11111");
+//        var len = $(".am-u-sm-6").length;
+//       alert(len)
+//        $(".am-u-sm-6").each(function (i,domEle) {
+//            alert("22222");
+//            console.log("v:"+domEle.nodeName+",i:"+i)
+//            if(i == 0){
+//                window.location.href="my.html";
+//            }else if(i == 1){
+//                window.location.href="my.html";
+//            }else if(i == 2){
+//                window.location.href="caseCollectList.html";
+//            }else if(i == 3){
+//                window.location.href="caseCollectList.html";
+//            }else if(i == 4){
+//                window.location.href="my.html";
+//            }else if(i == 5){
+//                window.location.href="my.html";
+//            }
+//
+//        })
+//    })
+
+</script>
+</html>

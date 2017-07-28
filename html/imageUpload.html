@@ -1,0 +1,80 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>你的标题</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="image/png" href="i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <!-- Amaze UI CSS -->
+    <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css">
+    <link rel="stylesheet" href="../assets/css/amazeui.css">
+    <link rel="stylesheet" href="../assets/css/sl.css">
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/amazeui.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <label>请选择一个图像文件：</label>
+    <input type="file" id="file_input" multiple/>
+</div>
+
+
+</body>
+<script>
+    $(function () {
+        var input = document.getElementById("file_input");
+        var result, div;
+        if(typeof  FileReader === 'undefined') {
+            result.innerHTML = "抱歉，你的浏览器不支持 FileReader";
+            input.setAttribute("disabled","disabled");
+        } else {
+            input.addEventListener('change',readFile,false)
+            console.log("input")
+        }
+        function readFile() {
+            for(var i = 0; i < this.files.length; i++) {
+                if(input['value'].match(/.jpg|.gif|.png|.bmp/i)){
+                    return alert("上传的图片格式不正确，请重新选择")
+                }
+                var reader  = new FileReader();
+                reader.readAsDataURL(this.files[i]);
+                reader.onload = function (e) {
+                    result = '<div id="result"><img src="'+this.result+'" alt=""></div>';
+                    div = document.createElement('div');
+                    div.innerHTML = result;
+                    document.body.appendChild(div);
+
+                }
+            }
+        }
+
+    })
+
+</script>
+</html>

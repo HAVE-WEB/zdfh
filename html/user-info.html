@@ -96,7 +96,7 @@
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 sl-flex-row-center-flex-start">
                 <input type="text" placeholder="请输入医院" name="hospital" style="width:70%">
-                <a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px ">选 择</a>
+                <button class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px " id="goSearchPage">选 择</button>
             </div>
         </div>
 
@@ -237,7 +237,7 @@
                                 <span>学术分级</span>
                             </div>
                             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                                <input type="text" placeholder="请选择学术分级" onclick="pickerEducation()" id="education">
+                                <input type="text" placeholder="请选择学术分级" onclick="pickerEducation()" id="">
                             </div>
                         </div>
                     </li>
@@ -247,7 +247,7 @@
                                 <span>销售分级</span>
                             </div>
                             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                                <input type="text" placeholder="请选择销售分级" onclick="pickerEducation()" id="education">
+                                <input type="text" placeholder="请选择销售分级" onclick="pickerEducation()" id="">
                             </div>
                         </div>
                     </li>
@@ -257,7 +257,7 @@
                                 <span>销售等级</span>
                             </div>
                             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                                <input type="text" placeholder="请选择销售等级" onclick="pickerEducation()" id="education">
+                                <input type="text" placeholder="请选择销售等级" onclick="pickerEducation()" >
                             </div>
                         </div>
                     </li>
@@ -359,6 +359,19 @@
     $("#button").click(function () {
         window.history.back(-1);
 //        window.location.href="my.html";
+    })
+
+
+    //选择按钮的click事件
+    $("#goSearchPage").click(function () {
+        var val = $("#address").val();
+        if(val == ""){
+            alert("请选择联系地址")
+        }else{
+            alert("search");
+           window.location.href="hospitalSearch.html";
+            //self.location('hospitalSearch.html')
+        }
     })
 
 

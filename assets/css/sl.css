@@ -189,6 +189,9 @@ body{
 .sl-padding-top-10px{
     padding-top: 10px;
 }
+.sl-padding-right-10px{
+    padding-right: 10px;
+}
 .sl-border-radius-percent50{
     border-radius: 50%;
 }
