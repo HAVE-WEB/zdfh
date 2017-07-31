@@ -62,12 +62,13 @@
 
 </body>
 <script>
-    $(document).ready(function () {
-        var URLength = history.length;
-        alert(URLength);
+    $(document).ready(function () {//document:是HTML DOM对象中的DOM Document对象，$(document):将DOM Document对象变成Jquery对象。.ready():jquery中的事件，当DOM载入就绪可以查询及操作一个要执行的函数。fn：要在DOM就绪时执行
+                                        //的函数。
+
     })
     $("#user-info").click(function () {
-        location.href="user-info.html";
+        //location.href="user-info.html";
+        location.replace("user-info.html");
     })
 </script>
 </html>
