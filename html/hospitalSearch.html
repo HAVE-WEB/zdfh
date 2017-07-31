@@ -58,58 +58,28 @@
         </div>
     </div>
     <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-column-center-center " style="height: 100%">
-        <button type="submit" class="am-btn am-btn-default am-btn-warning"  >查询</button>
+        <button type="submit" class="am-btn am-btn-default am-btn-warning"  id="search-hospital">查询</button>
     </div>
 </div>
-<ul class="am-list sl-margin-10px-10px">
-    <li class="sl-flex-row-center-space-between sl-padding-top-10px"  style="display: flex;"><span> 或深或浅，盖上布，以为不存在。</span><input type="radio" name="radio" value="option1"></li>
-    <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >自己走不出来，别人也闯不进去。</span><input type="radio" name="radio" value="option1"></li>
-    <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span > 或深或浅，盖上布，以为不存在。</span><input type="radio" name="radio" value="option1"></li>
-    <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >自己走不出来，别人也闯不进去。</span><input type="radio" name="radio" value="option1"></li>
-    <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span > 或深或浅，盖上布，以为不存在。</span><input type="radio" name="radio" value="option1"></li>
-    <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >自己走不出来，别人也闯不进去。</span><input type="radio" name="radio" value="option1"></li>
-</ul>
+<form >
+    <ul class="am-list sl-margin-10px-10px" id="list1" style="display: block">
+        <li class="sl-flex-row-center-space-between sl-padding-top-10px"  style="display: flex;"><span>1 或深或浅，盖上布，以为不存在。</span><input type="radio" name="list" value="option1" ></li>
+        <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >2自己走不出来，别人也闯不进去。</span><input type="radio" name="list" value="option2"></li>
+        <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >3 或深或浅，盖上布，以为不存在。</span><input type="radio" name="list" value="option3"></li>
+        <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >4自己走不出来，别人也闯不进去。</span><input type="radio" name="list" value="option4"></li>
+        <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >5 或深或浅，盖上布，以为不存在。</span><input type="radio" name="list" value="option5"></li>
+        <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >6自己走不出来，别人也闯不进去。</span><input type="radio" name="list" value="option6"></li>
+    </ul>
+    <ul class="am-list sl-margin-10px-10px" style="display: none;" id="list2">
+    </ul>
+
+</form>
+
 
 
 </body>
 <script>
-//    $(document).ready(function () {
-//        var h = window.innerHeight;
-//        var y = window.pageYOffset;
-//        var x=window.pageXOffset;
-//        console.log("H;"+h+"y:"+y+"x:"+x);
-//        $(".am-g").css("height",h/3+"px");
-//    })
-//    $("#my").click(function () {
-//        window.location.href="my.html";
-//    })
-    function goNext(i) {
-        if(i == 0){
-            window.location.href="my.html";
-        }else if(i == 1){
-            window.location.href="my.html";
-        }else if(i == 2){
-            window.location.href="caseCollectList.html";
-        }else if(i == 3){
-            window.location.href="my.html";
-        }else if(i == 4){
-            window.location.href="my.html";
-        }else if(i == 5){
-            window.location.href="my.html";
-        }
-    }
-
-//    $("#search").onpropertychange(function () {
-//        console.log("start")
-//        console.log("val:"+$(this).val())
-//        ;
-//        if($(this).val() !== ""){
-//            $(this).next().css("display","block");
-//        }else{
-//            $(this).next().css("display","none");
-//        }
-//        console.log("end")
-//    })
+    //显示和隐藏close按钮
     function inputVal() {
         console.log("start")
 
@@ -117,54 +87,65 @@
             $("#search").next().css("display","block");
         }else{
             $("#search").next().css("display","none");
+            $("#list1").css('display','block');
+            $("#list2").css('display','none').empty()
         }
         console.log("end")
     }
+    //清除input中的内容
     $("#clearVal").click(function () {
         $("#search").val("");
         $(this).css("display","none");
+        $("#list1").css('display','block');
+        $("#list2").css('display','none').empty()
     })
-$(".am-list li").click(function () {
-    $(this).find("input[type=radio]").attr("checked","checked");
-})
-$("#button").click(function () {
-
-    $(".am-list input").each(function (i ,v) {
-        if($(this).attr("checked") == "checked"){
-            window.history.go(-1)
-            return false
-        }else {
-            if(i == $(".am-list input").length-1){
-                alert("请选择一条数据");
+    //点击文本，radio获取焦点
+//    $(".am-list:visible li").click(function () {
+//        $(this).find("input[type=radio]").attr("checked","checked");
+//    })
+//    $("#list2 li").on("click",function () {
+//        $(this).find("input[type=radio]").attr("checked","checked");
+//    })
+    //点击确认按钮，跳转页面传输数据
+    $("#button").click(function () {
+        $(".am-list:visible input").each(function (i ,v) {
+            //console.log("i:"+i+",v"+v);
+            //console.log("B:"+($(".am-list:visible").css('display')== "block")+"V:"+($(this).attr("checked") )+"D:"+$("input:radio:checked").val())
+            if($("input:radio:checked").val() !=undefined ){
+                alert("i:"+i);
+               var result =  $(this).prev().html();
+               var url= "user-info.html?result="+result;
+                location.href=encodeURI(url);
+                return false
+            }else {
+                if(i == $(".am-list:visible input").length-1){
+                    alert("请选择一条数据");
+                }
             }
+        })
+    });
+    //点击查询按钮
+    $("#search-hospital").click(function () {
+        var val = $("#search").val();
+        var tempArr=[];
+        if($.trim(val) !== ""){
+            $("#list1 span").each(function (i,v) {
+                 if(v.innerHTML.indexOf($.trim(val)) != -1){
+                    tempArr.push(v.innerHTML);
+                 }
+             })
+            var li = '';
+            for(var i=0;i<tempArr.length;i++){
+                 var li1 =' <li class="sl-flex-row-center-space-between sl-padding-top-10px"  style="display: flex;"><span>'+tempArr[i]+'</span><input type="radio" name="radio" value="option'+i+'"></li>'
+                li+=li1;
+            }
+           $("#list2").empty().append(li).css('display','block').attr('disabled',false);
+           $("#list1").css({display:'none'}).attr('disabled',true);
+
+        }else{
+            alert("请输入查询条件")
         }
     })
-})
-
-
-//    $("body").click(function () {
-//        alert("11111");
-//        var len = $(".am-u-sm-6").length;
-//       alert(len)
-//        $(".am-u-sm-6").each(function (i,domEle) {
-//            alert("22222");
-//            console.log("v:"+domEle.nodeName+",i:"+i)
-//            if(i == 0){
-//                window.location.href="my.html";
-//            }else if(i == 1){
-//                window.location.href="my.html";
-//            }else if(i == 2){
-//                window.location.href="caseCollectList.html";
-//            }else if(i == 3){
-//                window.location.href="caseCollectList.html";
-//            }else if(i == 4){
-//                window.location.href="my.html";
-//            }else if(i == 5){
-//                window.location.href="my.html";
-//            }
-//
-//        })
-//    })
 
 </script>
 </html>

@@ -62,8 +62,12 @@
 
 </body>
 <script>
+    $(document).ready(function () {
+        var URLength = history.length;
+        alert(URLength);
+    })
     $("#user-info").click(function () {
-        window.location.href="user-info.html";
+        location.href="user-info.html";
     })
 </script>
 </html>

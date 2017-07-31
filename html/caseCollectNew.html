@@ -32,6 +32,7 @@
 
     <!-- Amaze UI CSS -->
     <link rel="stylesheet" href="../assets/css/amazeui.css">
+    <link rel="stylesheet" href="../assets/css/upload/zyUpload.css">
     <link rel="stylesheet" href="../assets/css/sl.css">
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/amazeui.js"></script>
@@ -41,6 +42,10 @@
     <script src="../assets/js/data/hospitalLeave.js"></script>
     <script src="../assets/js/data/hospitalOffice.js"></script>
     <script src="../assets/js/data/education.js"></script>
+    <script src="../assets/js/upload/zyUpload.js"></script>
+    <script src="../assets/js/upload/zyFile.js"></script>
+    <script src="../assets/js/upload/jq22.js.js"></script>
+
     <style>
         input:focus{
             outline: none;
@@ -85,7 +90,7 @@
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 sl-flex-row-center-flex-start">
                 <input type="text" placeholder="请输入医院" name="hospital" style="width:70%">
-                <a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px " href="hospitalSearch.html">选 择</a>
+                <button class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px " id="goSearchPage">选 择</button>
             </div>
         </div>
 
@@ -141,8 +146,10 @@
         <!--</div>-->
         <!--<span>图片列表[点击删除]</span>-->
         <!--<div id="file-list"></div>-->
-        <input type="file" id="file" multiple size="80"/>
-        <input type="button" onclick="ShowFileName();" value="文件上传"/>
+
+        <h1 style="text-align:center;">Html5 Upload示例</h1>
+
+        <div id="demo" class="demo"></div>
 
         <button type="submit" class="am-btn am-btn-default am-btn-warning" style="position: fixed;top: 0px;" id="button">提交</button>
     </fieldset>
@@ -245,8 +252,20 @@
         });
     };
     $("#button").click(function () {
-        window.history.back(-1);
+        history.back();
 //        window.location.href="my.html";
+    })
+    //选择按钮的click事件
+    $("#goSearchPage").click(function () {
+        var val = $("#address").val();
+        console.log("val:"+val);
+        if(val == ""){
+            alert("请选择联系地址")
+        }else{
+            alert("search");
+            location.href="hospitalSearch.html";
+            //self.location('hospitalSearch.html')
+        }
     })
 
 
