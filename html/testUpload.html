@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testUpload</title>
+</head>
+<script src="../assets/js/jquery.min.js"></script>
+<body>
+<div id="result"></div>
+
+选择文件<input type="file" id="file" multiple size="80" onchange="html5Upload()"/>
+<input type="button" onclick="ShowFileName();" value="显示文件名称"/>
+<input type="button" value="读取图像" onclick = "readAsDataURL()"/>
+<input type="button" value="读取二进制数据" onclick = "readAsBinaryString()"/>
+<input type="button" value="读取文本文件" onclick = "readAsText()"/>
+</body>
+<script>
+
+//    var result = document.getElementById("result");
+    var result = $("#result");
+    if(typeof FileReader == 'undefined') {
+        result.innerHTML = "抱歉，你的浏览器不支持FileReader";
+    }
+    //将文件以DataURL形式读入页面
+    function html5Upload() {
+        var str = "";
+        var file;
+        var fileReader;
+        var fileTag = document.getElementById("file").files;
+
+        for (var i = 0; i < fileTag.length; i++) {
+            file = fileTag[i];
+            fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = (function () {
+                var img = '<img src="' + this.result + '" alt="" style="width: 50%;height: 50%;"/>';
+                $(img).appendTo(result);
+//                $(img).appendTo(result)
+            })
+        }
+    }
+    //将文件以文本的形式读入页面
+    function readAsText() {
+        var simpleFile = document.getElementById("file").files[0];
+        var reader = new FileReader();
+        // 将文件以文本形式读入页面中
+        reader.readAsText(simpleFile);
+        reader.onload = function(e){
+            result.innerHTML = this.result;
+        }
+    }
+    //将文件以二进制形式读入页面
+    function readAsBinaryString(){
+        var simpleFile = document.getElementById("file").files[0];
+       if(!/image\/\w+/.test(simpleFile.type)){
+           alert("请确保文件类型为图像类型");
+           return false;
+       }
+       var reader =  new FileReader();
+       reader.readAsBinaryString(simpleFile);
+       reader.onload = function (e) {
+           result.innerHTML = this.result;
+       }
+
+    }
+    //将文件以DataURL形式读入页面
+    function readAsDataURL() {
+        var str  ="";
+        var fileTag = document.getElementById("file").files;
+
+        for(var i=0;i<fileTag.length;i++){
+            var file = fileTag[i];
+            var fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+
+            fileReader.onload=(function () {
+//                alert("111");
+//                var img = '<img src="'+this.result+'" alt="" />';
+//                console.log("str:"+str)
+//                str+=img;
+               result.innerHTML = '<img src="'+this.result+'" alt="" style="width: 50%;height: 50%;"/>';
+
+//                $(img).appendTo(result)
+            })
+        }
+
+        result.innerHTML=str;
+
+
+    }
+
+
+    function ShowFileName() {
+        var fileList = document.getElementById("file").files;
+        for(var i=0; i < fileList.length; i++){
+            var file = fileList[i];
+            console.log("file:"+file);
+            console.log("name:"+file.name)
+        }
+    }
+
+
+</script>
+</html>

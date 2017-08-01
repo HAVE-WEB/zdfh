@@ -42,9 +42,9 @@
     <script src="../assets/js/data/hospitalLeave.js"></script>
     <script src="../assets/js/data/hospitalOffice.js"></script>
     <script src="../assets/js/data/education.js"></script>
-    <script src="../assets/js/upload/zyUpload.js"></script>
+    <!--<script src="../assets/js/upload/zyUpload.js"></script>
     <script src="../assets/js/upload/zyFile.js"></script>
-    <script src="../assets/js/upload/jq22.js.js"></script>
+    <script src="../assets/js/upload/jq22.js.js"></script>-->
 
     <style>
         input:focus{
@@ -79,7 +79,7 @@
                 <span>联系地址:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择联系地址" onclick="pickerAddress()" name="address" id="address" >
+                <input type="text" placeholder="请选择联系地址" onclick="pickerAddress()" name="address" id="address" readonly>
             </div>
         </div>
 
@@ -89,8 +89,9 @@
                 <span>医院:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 sl-flex-row-center-flex-start">
-                <input type="text" placeholder="请输入医院" name="hospital" style="width:70%">
-                <button class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px " id="goSearchPage">选 择</button>
+                <input type="text" placeholder="请输入医院" name="hospital" style="width:70%" id="hospital" >
+                <!--<a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px " id="goSearchPage" href="hospitalSearch.html">选 择</a>-->
+                <a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px " id="goSearchPage" >选 择</a>
             </div>
         </div>
 
@@ -99,7 +100,7 @@
                 <span>等级:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择等级" onclick="pickerHospitalLevel()" name="hospitalLevel" id="hospitalLevel" >
+                <input type="text" placeholder="请选择等级" onclick="pickerHospitalLevel()" name="hospitalLevel" id="hospitalLevel" readonly>
             </div>
         </div>
 
@@ -108,7 +109,7 @@
                 <span>科室:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择科室" onclick="pickerHospitalOffice()" name="hospitalOffice" id="hospitalOffice" >
+                <input type="text" placeholder="请选择科室" onclick="pickerHospitalOffice()" name="hospitalOffice" id="hospitalOffice" readonly>
             </div>
         </div>
 
@@ -128,7 +129,7 @@
                 <span>品种:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择品种" onclick="pickerType()" name="type" id="type" >
+                <input type="text" placeholder="请选择品种" onclick="pickerType()" name="type" id="type" readonly>
             </div>
         </div>
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
@@ -147,16 +148,52 @@
         <!--<span>图片列表[点击删除]</span>-->
         <!--<div id="file-list"></div>-->
 
-        <h1 style="text-align:center;">Html5 Upload示例</h1>
+        <!--<h1 style="text-align:center;">Html5 Upload示例</h1>-->
 
-        <div id="demo" class="demo"></div>
+        <!--<div id="demo" class="demo"></div>-->
+        <!--<div id="result"></div>-->
+        <div class="am-g sl-margin-top-10px">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <!--<input type="file" id="file" multiple size="80" onchange="html5Upload()"/>-->
+                <div class="am-form-group am-form-file">
+                    <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                        <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+                    <input id="doc-form-file" type="file" multiple onchange="html5Upload()">
+                </div>
+            </div>
+        </div>
 
+
+        <ul class="am-avg-sm-4 am-avg-md-4 am-avg-lg-4" id="result">
+
+        </ul>
         <button type="submit" class="am-btn am-btn-default am-btn-warning" style="position: fixed;top: 0px;" id="button">提交</button>
     </fieldset>
 </form>
 
 </body>
 <script>
+    var result = $("#result");
+//    if(typeof FileReader == 'undefined') {
+//        result.innerHTML = "抱歉，你的浏览器不支持FileReader";
+//    }
+    //将文件以DataURL形式读入页面
+    function html5Upload() {
+        var str = "";
+        var file;
+        var fileReader;
+        var fileTag = document.getElementById("doc-form-file").files;
+
+        for (var i = 0; i < fileTag.length; i++) {
+            file = fileTag[i];
+            fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = (function () {//this代表fileReader对象
+                var img = '<li><img src="' + this.result + '" alt="" class="am-thumbnail" style="width: 95%;height: 95%"/></li>';
+                $(img).appendTo(result);
+            })
+        }
+    }
     function ShowFileName() {
         var files = document.getElementById("file").files;
         for(var i = 0; i < files.length; i+=1) {
@@ -167,14 +204,25 @@
     }
 
     $(document).ready(function () {
+        //计算按钮的位置
         var w_window = window.innerWidth;
-
-//        var w_element= $("#button").width();
-//        var h =$("#button").height();
         var oh = $("#button").outerHeight();
         var ow = $("#button").outerWidth();
-       // console.log("w:"+w_window+"s:"+w_element+"h:"+h+"ih:"+ih+"ow:"+ow)
         $("#button").css("left",(w_window - ow)+"px");
+
+
+        //获取从查询页面传来的数据
+        //第一种方法读取
+        var result_1 = localStorage.result;
+        //第二中方法读取
+        var result= localStorage['result'];
+        //第三种方法读取
+        var result_3=localStorage.getItem("result");
+         var session = sessionStorage.getItem("result");
+        $("#hospital").val(session);
+        //localStorage.removeItem("result")
+        sessionStorage.removeItem("result");
+//        localStorage.clear();
     })
     //选择省市区控件
     function pickerAddress() {
@@ -253,16 +301,17 @@
     };
     $("#button").click(function () {
         history.back();
-//        window.location.href="my.html";
+//        window.location.href="caseCollectList.html";
     })
     //选择按钮的click事件
     $("#goSearchPage").click(function () {
         var val = $("#address").val();
-        console.log("val:"+val);
+        //console.log("val:"+val);
         if(val == ""){
-            alert("请选择联系地址")
+            alert("请选择联系地址");
+            //$("#address").focus();
         }else{
-            alert("search");
+            //alert("search");
             location.href="hospitalSearch.html";
             //self.location('hospitalSearch.html')
         }

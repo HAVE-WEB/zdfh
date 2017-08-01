@@ -49,7 +49,7 @@
 </head>
 <body>
 
-<form class="am-form ">
+<form class="am-form " id="doc-valid-msg">
     <fieldset>
 
         <div class="am-g sl-flex-row-center-center sl-font-size-16px sl-padding-0px">
@@ -76,7 +76,7 @@
                 <span>姓名:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请输入姓名"  >
+                <input type="text" placeholder="请输入姓名"  required minlength="3">
             </div>
         </div>
 
@@ -85,7 +85,7 @@
                 <span>联系地址:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择联系地址" onclick="pickerAddress()" name="address" id="address" >
+                <input type="text" placeholder="请选择联系地址" onclick="pickerAddress()" name="address" id="address"  required data-validation-message="请选择联系地址">
             </div>
         </div>
 
@@ -95,8 +95,9 @@
                 <span>医院:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 sl-flex-row-center-flex-start">
-                <input type="text" placeholder="请输入医院" name="hospital" style="width:70%" id="hospital">
-                <a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px" href="hospitalSearch.html">选 择</a>
+                <input type="text" placeholder="请输入医院" name="hospital" style="width:70%" id="hospital" required>
+                <!--<a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px" href="hospitalSearch.html">选 择</a>-->
+                <a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px" id="goSearchPage">选 择</a>
             </div>
         </div>
 
@@ -105,7 +106,7 @@
                 <span>等级:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择等级" onclick="pickerHospitalLevel()" name="hospitalLevel" id="hospitalLevel" >
+                <input type="text" placeholder="请选择等级" onclick="pickerHospitalLevel()" name="hospitalLevel" id="hospitalLevel" readonly required>
             </div>
         </div>
 
@@ -114,7 +115,7 @@
                 <span>科室:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择科室" onclick="pickerHospitalOffice()" name="hospitalOffice" id="hospitalOffice" >
+                <input type="text" placeholder="请选择科室" onclick="pickerHospitalOffice()" name="hospitalOffice" id="hospitalOffice" readonly required>
             </div>
         </div>
 
@@ -265,7 +266,8 @@
             </li>
         </ul>
 
-        <button type="submit" class="am-btn am-btn-default am-btn-warning" style="position: fixed;top: 0px;" id="user-Info-btn" >提交</button>
+        <button type="submit" class="am-btn am-btn-default am-btn-warning" style="position: fixed;top: 0px;"  id="user-Info-btn" >提交</button>
+        <!--<a type="submit" class="am-btn am-btn-default am-btn-warning"   href="my.html" >提交</a>-->
     </fieldset>
 </form>
 
@@ -283,25 +285,49 @@
 <!--</div>-->
 </body>
 <script>
+//    window.onpopstate = function(event) {
+//        alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+//    };
+//    jQuery(document).ready(function () {
+//        $("#doc-valid-msg").validator({
+//            onValid: function (validity) {
+//                $(validity.field).closest('.am-g').find('.am-alert').hide();
+//            },
+//            onInValid: function (validity) {
+//                var $field = $(validity.field);
+//                var $group = $field.closest('.am-g');
+//                var $alert = $group.find('.am-alert');
+//                var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+//                if(!$alert.length){
+//                    $alert = $('<div class="am-alert am-alert-danger"></div>').hide().insertAfter($group);
+//                }
+//                $alert.html(msg).show();
+//            }
+//        })
+//    })
     $(document).ready(function () {
+        //设置按钮的位置
         var p=location.host;
-        console.log("p:"+p)
-
         var w_window = window.innerWidth;
         var ow = $("#user-Info-btn").outerWidth();
         $("#user-Info-btn").css("left",(w_window - ow)+"px");
 
-        //获取URL的参数
-        var name = "result";
-        var locationSearch = decodeURI(location.search);
-        if(locationSearch.indexOf(name) != -1){
-                var pos_start = locationSearch.indexOf(name)+name.length+1;
-                var pos_end = locationSearch.indexOf("&",pos_start);
-        }
-        if(pos_end ==  -1){
-            var hos = locationSearch.substr(pos_start)
-            $("#hospital").val(hos);
-        }
+//        //获取URL的参数
+//        var name = "result";
+//        var locationSearch = decodeURI(location.search);
+//        if(locationSearch.indexOf(name) != -1){
+//                var pos_start = locationSearch.indexOf(name)+name.length+1;
+//                var pos_end = locationSearch.indexOf("&",pos_start);
+//        }
+//        if(pos_end ==  -1){
+//            var hos = locationSearch.substr(pos_start)
+//            $("#hospital").val(hos);
+//        }
+        //从本地存储获取值
+//        var result= localStorage['result'];
+        var result =  sessionStorage.getItem("result");
+        $("#hospital").val(result);
+        sessionStorage.removeItem("result");
     });
     //选择省市区控件
     function pickerAddress() {
@@ -383,22 +409,33 @@
 //        location.replace("my.html");
 //    }
     $("#user-Info-btn").on("click",function () {
+
+
 //        history.go(-1);
-      //  location.replace("my.html");
+        //location.replace("my.html");//这个为什么不行，因为在history的列表已经有了my.html的URL的值，所以不会跳转
+//        if($("#doc-valid-msg").valid){
+//            alert(1111);
+//            history.back();
+//        }
+        history.back();
 //        var stateObj = {foo:'bar'};
 //       history.replaceState(stateObj,'我的页面','my.html');
+        //alert(2222);
     });
 
 
     //选择按钮的click事件
-    $("#search-hospital").click(function () {
+    $("#goSearchPage").click(function () {
         var val = $("#address").val();
-//        if(val ===  ""){
-//            alert("请选择联系地址")
-//            location.reload();
-//        }else{
-          location.href="hospitalSearch.html";
-//        }
+        //console.log("val:"+val);
+        if(val == ""){
+            alert("请选择联系地址");
+            //$("#address").focus();
+        }else{
+            //alert("search");
+            location.href="hospitalSearch.html";
+            //self.location('hospitalSearch.html')
+        }
     })
 </script>
 </html>

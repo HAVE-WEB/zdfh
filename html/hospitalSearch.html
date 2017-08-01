@@ -63,7 +63,7 @@
 </div>
 <form >
     <ul class="am-list sl-margin-10px-10px" id="list1" style="display: block">
-        <li class="sl-flex-row-center-space-between sl-padding-top-10px"  style="display: flex;"><span>1 或深或浅，盖上布，以为不存在。</span><input type="radio" name="list" value="option1" ></li>
+        <li class="sl-flex-row-center-space-between sl-padding-top-10px"  style="display: flex;"><span >1 或深或浅，盖上布，以为不存在。</span><input type="radio" name="list" value="option1" ></li>
         <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >2自己走不出来，别人也闯不进去。</span><input type="radio" name="list" value="option2"></li>
         <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >3 或深或浅，盖上布，以为不存在。</span><input type="radio" name="list" value="option3"></li>
         <li class="sl-flex-row-center-space-between sl-padding-top-10px" style="display: flex;"><span >4自己走不出来，别人也闯不进去。</span><input type="radio" name="list" value="option4"></li>
@@ -110,12 +110,27 @@
     $("#button").click(function () {
         $(".am-list:visible input").each(function (i ,v) {
             //console.log("i:"+i+",v"+v);
-            //console.log("B:"+($(".am-list:visible").css('display')== "block")+"V:"+($(this).attr("checked") )+"D:"+$("input:radio:checked").val())
-            if($("input:radio:checked").val() !=undefined ){
-                alert("i:"+i);
+            //console.log("B:"+($(".am-list:visible").css('display')== "block")+"V:"+($(this).attr("checked") )+"D:"+$("input:radio:checked"));
+            //alert("checked:"+$("input:radio:checked"))
+            //alert("aaaa:"+$(this)[0].checked)
+            if($(this)[0].checked ){
+               // alert("i:"+i);
                var result =  $(this).prev().html();
-               var url= "user-info.html?result="+result;
-                location.href=encodeURI(url);
+               //var url= "user-info.html?result="+result;
+                //location.href=encodeURI(url);
+               // var temp = encodeURI(url)
+//                location.replace(temp);
+                if(window.sessionStorage){
+                   // alert('This browser supports localStorage');
+                    sessionStorage.setItem("result", result);
+                    //localStorage["pro"]=result;
+                    //localStorage.setItem("test",10);
+                    //sessionStorage.setItem("result",result);
+
+                }else{
+                   // alert('This browser does NOT support localStorage');
+                }
+                history.back();
                 return false
             }else {
                 if(i == $(".am-list:visible input").length-1){
