@@ -73,16 +73,16 @@
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
             <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-font-size-16px sl-padding-0px" >
-                <span>姓名:</span>
+                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>姓名:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请输入姓名"  required minlength="3">
+                <input type="text" placeholder="请输入姓名"  required >
             </div>
         </div>
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
             <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-font-size-16px sl-padding-0px" >
-                <span>联系地址:</span>
+                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>联系地址:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
                 <input type="text" placeholder="请选择联系地址" onclick="pickerAddress()" name="address" id="address"  required data-validation-message="请选择联系地址">
@@ -92,7 +92,7 @@
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
             <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-padding-0px" >
-                <span>医院:</span>
+                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>医院:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 sl-flex-row-center-flex-start">
                 <input type="text" placeholder="请输入医院" name="hospital" style="width:70%" id="hospital" required>
@@ -103,19 +103,19 @@
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
             <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-font-size-16px sl-padding-0px" >
-                <span>等级:</span>
+                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>等级:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择等级" onclick="pickerHospitalLevel()" name="hospitalLevel" id="hospitalLevel" readonly required>
+                <input type="text" placeholder="请选择等级" onclick="pickerHospitalLevel()" name="hospitalLevel" id="hospitalLevel"  required>
             </div>
         </div>
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
             <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-font-size-16px sl-padding-0px" >
-                <span>科室:</span>
+                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>科室:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择科室" onclick="pickerHospitalOffice()" name="hospitalOffice" id="hospitalOffice" readonly required>
+                <input type="text" placeholder="请选择科室" onclick="pickerHospitalOffice()" name="hospitalOffice" id="hospitalOffice"  required>
             </div>
         </div>
 
@@ -305,6 +305,10 @@
 //            }
 //        })
 //    })
+    //不同屏幕，文字的排版
+    $(document).ready(function () {
+
+    })
     $(document).ready(function () {
         //设置按钮的位置
         var p=location.host;

@@ -38,6 +38,7 @@
     <script src="../assets/js/amazeui.js"></script>
     <link rel="stylesheet" href="../assets/css/picker.css">
     <script src="../assets/js/picker.js"></script>
+    <script src="../assets/js/myFirst.js"></script>
     <script src="../assets/js/data/city.js"></script>
     <script src="../assets/js/data/hospitalLeave.js"></script>
     <script src="../assets/js/data/hospitalOffice.js"></script>
@@ -50,6 +51,11 @@
         input:focus{
             outline: none;
         }
+
+       /*input[placeholder], [placeholder], *[placeholder] {*/
+            /*color:red !important;*/
+            /*font-size: 28px;*/
+        /*}*/
     </style>
 </head>
 <body>
@@ -57,7 +63,7 @@
 <form class="am-form ">
     <fieldset>
 
-        <div class="am-g sl-flex-row-center-center sl-font-size-16px sl-padding-0px">
+        <div class="am-g sl-flex-row-center-center  sl-padding-0px">
             <div class="am-u-sm-12 am-u-md-12 am-u-lg-12 sl-flex-row-center-center" >
                 <img src="../assets/images/car.png" alt="" style="width: 30%;height: 30%">
             </div>
@@ -66,55 +72,55 @@
 
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
-            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-font-size-16px sl-padding-0px" >
-                <span>姓名:</span>
+            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >
+               <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c" ></i><span>姓名:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请输入姓名"  >
+                <input type="text"  placeholder="请输入姓名"  required  >
             </div>
         </div>
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
-            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-font-size-16px sl-padding-0px" >
-                <span>联系地址:</span>
+            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >
+                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>联系地址:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择联系地址" onclick="pickerAddress()" name="address" id="address" readonly>
+                <input type="text" placeholder="请选择联系地址" onclick="pickerAddress()" name="address" id="address"  required>
             </div>
         </div>
 
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
-            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-padding-0px" >
-                <span>医院:</span>
+            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >
+                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>医院:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 sl-flex-row-center-flex-start">
-                <input type="text" placeholder="请输入医院" name="hospital" style="width:70%" id="hospital" >
+                <input type="text" placeholder="请输入医院" name="hospital" style="width:70%" id="hospital" required>
                 <!--<a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px " id="goSearchPage" href="hospitalSearch.html">选 择</a>-->
                 <a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px " id="goSearchPage" >选 择</a>
             </div>
         </div>
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
-            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-font-size-16px sl-padding-0px" >
-                <span>等级:</span>
+            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >
+                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>等级:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择等级" onclick="pickerHospitalLevel()" name="hospitalLevel" id="hospitalLevel" readonly>
+                <input type="text" placeholder="请选择等级" onclick="pickerHospitalLevel()" name="hospitalLevel" id="hospitalLevel" required>
             </div>
         </div>
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
-            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-font-size-16px sl-padding-0px" >
-                <span>科室:</span>
+            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >
+                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i> <span>科室:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择科室" onclick="pickerHospitalOffice()" name="hospitalOffice" id="hospitalOffice" readonly>
+                <input type="text" placeholder="请选择科室" onclick="pickerHospitalOffice()" name="hospitalOffice" id="hospitalOffice" required>
             </div>
         </div>
 
         <!--<div class="am-g sl-flex-row-center-center sl-margin-top-10px">-->
-            <!--<div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-font-size-16px sl-padding-0px" >-->
+            <!--<div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >-->
                 <!--<span>职务:</span>-->
             <!--</div>-->
             <!--<div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">-->
@@ -125,15 +131,15 @@
 
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
-            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-font-size-16px sl-padding-0px" >
-                <span>品种:</span>
+            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >
+                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>品种:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择品种" onclick="pickerType()" name="type" id="type" readonly>
+                <input type="text" placeholder="请选择品种" onclick="pickerType()" name="type" id="type" required>
             </div>
         </div>
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
-            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-font-size-16px sl-padding-0px" >
+            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >
                 <span>简单描述:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
@@ -157,12 +163,12 @@
                 <!--<input type="file" id="file" multiple size="80" onchange="html5Upload()"/>-->
                 <div class=" am-form-file">
                     <button type="button" class="am-btn am-btn-danger am-btn-sm">
-                        <i class="am-icon-cloud-upload"></i> 选择要上传的图片</button>
+                        <i class="am-icon-cloud-upload"></i> 上传图片</button>
                     <input id="doc-form-file" type="file" multiple onchange="html5Upload()">
                 </div>
             </div>
             <div class="am-u-sm-6 am-u-md-6 am-u-lg-6 sl-flex-row-center-center">
-                <span class="sl-font-size-16px" id="hintImage" style="display: none">点击图片删除图片、<br/>最多上传9张</span>
+                <span class="" id="hintImage" style="display: none">点击图片删除图片、<br/>最多上传9张</span>
 
             </div>
         </div>
@@ -178,6 +184,40 @@
 
 </body>
 <script>
+    //对于不同尺寸的手机，字体大小不一样
+    $(document).ready(function () {
+//        var out = new Out();
+//        out.back();
+//        window.Picker.name
+        Picker.FillData()
+        window.Rem.adapterWidth
+//        if(h <= 375){//iphone6的宽度一下 字体大小为14px
+//           $("html").css("font-size","87.5%");//百分比对象的字体大小为14px，0.875em
+//           $("body").css("font-size","1rem");
+//           $("input").css("font-size","1rem")
+//           $(":submit").css("font-size","1rem");
+//           $(":button").css("font-size","1rem");
+//        }else if(h <= 414){//宽度在iphone6-iphone6s之间
+//            $("html").css("font-size","100%");//16px
+//            $("body").css("font-size","1rem");
+//            $("input").css("font-size","1rem")
+//            $(":submit").css("font-size","1rem");
+//            $(":button").css("font-size","1rem");
+//        }else if(h <= 768){
+//            $("html").css("font-size","112.5%");
+//            $("body").css("font-size","1rem");
+//            $("input").css("font-size","1rem")
+//            $(":submit").css("font-size","1rem");
+//            $(":button").css("font-size","1rem");
+//        } else {
+//            $("html").css("font-size","30px")
+//            $("body").css("font-size","1rem");
+//            $("input").css("font-size","1rem")
+//            $(":submit").css("font-size","1rem");
+//            $(":button").css("font-size","1rem");
+//        }
+    })
+
     var result = $("#result");
 //    if(typeof FileReader == 'undefined') {
 //        result.innerHTML = "抱歉，你的浏览器不支持FileReader";

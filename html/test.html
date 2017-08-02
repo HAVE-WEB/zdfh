@@ -32,10 +32,23 @@
 
     <!-- Amaze UI CSS -->
     <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css">
-
+    <style>
+        #box{
+            width:50px;
+            height: 50px;
+            background-color: #1b961b;
+        }
+        #box:active{
+            background-color: red;
+        }
+    </style>
 </head>
+<script src="../assets/js/myFirst.js"></script>
 <body>
-
+<script>
+    var out = new Out("这个你三");
+    console.log(out.back());
+</script>
 
 <form action="" class="am-form" id="doc-vld-msg">
     <fieldset>
@@ -120,32 +133,37 @@
         </div>
 
         <button class="am-btn am-btn-secondary" type="submit">提交</button>
+        <style>
+
+        </style>
+        <div  id="box"></div>
+
     </fieldset>
 </form>
 
 </body>
 <script>
-    $(function() {
-        $('#doc-vld-msg').validate({
-            onValid: function(validity) {
-                $(validity.field).closest('.am-form-group').find('.am-alert').hide();
-            },
-
-            onInValid: function(validity) {
-                var $field = $(validity.field);
-                var $group = $field.closest('.am-form-group');
-                var $alert = $group.find('.am-alert');
-                // 使用自定义的提示信息 或 插件内置的提示信息
-                var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
-
-                if (!$alert.length) {
-                    $alert = $('<div class="am-alert am-alert-danger"></div>').hide().
-                    appendTo($group);
-                }
-
-                $alert.html(msg).show();
-            }
-        });
-    });
+//    $(function() {
+//        $('#doc-vld-msg').validate({
+//            onValid: function(validity) {
+//                $(validity.field).closest('.am-form-group').find('.am-alert').hide();
+//            },
+//
+//            onInValid: function(validity) {
+//                var $field = $(validity.field);
+//                var $group = $field.closest('.am-form-group');
+//                var $alert = $group.find('.am-alert');
+//                // 使用自定义的提示信息 或 插件内置的提示信息
+//                var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+//
+//                if (!$alert.length) {
+//                    $alert = $('<div class="am-alert am-alert-danger"></div>').hide().
+//                    appendTo($group);
+//                }
+//
+//                $alert.html(msg).show();
+//            }
+//        });
+//    });
 </script>
 </html>
