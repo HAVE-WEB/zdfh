@@ -3,10 +3,10 @@
  */
 (function (window, document, Math) {
     //scroll
-    function Scroll(id, params) {
-        this.scroller = document.querySelector(id);
+    function Scroll(id, params) {//类名是Scroll
+        this.scroller = document.querySelector(id);//this.scroller:类Scroll的对象的属性
         this.childNode = this.scroller.childNodes[0];
-        this.options = {
+        this.options = {//对象的属性，属性的类型是Object类型的
             step: true,// 是否开启步长模式
             defaultPlace: 0,// 默认列表位置
             callback: null
@@ -33,14 +33,14 @@
         var defaultPlace = this.options.defaultPlace ? this.options.defaultPlace : 0;
         this.scrollTo(0, defaultPlace);
 
-        this._start();
+        this._start();//定义的原型方法，只能类的对象调用
         this._move();
         this._end();
         // console.log(this);
     }
 
-    Scroll.prototype = {
-        _start: function () {
+    Scroll.prototype = {//原型方法
+        _start: function () {//等价于Scroll.prototype._start = function(){}
             var self = this;
             self.scroller.addEventListener('touchstart', function (e) {
                 e.stopPropagation();
@@ -54,7 +54,7 @@
             }, false);
         },
 
-        _move: function () {
+        _move: function () {//等价于Scroll.prototype._move = function(){}
             var self = this;
             self.scroller.addEventListener('touchmove', function (e) {
                 e.stopPropagation();
@@ -84,7 +84,7 @@
             }, false);
         },
 
-        _end: function () {
+        _end: function () {//累.prototype.方法名。定义了原型方法，只能类的对象才能调用
             var self = this;
             self.scroller.addEventListener('touchend', function (e) {
                 e.stopPropagation();
@@ -142,7 +142,7 @@
         },
 
         // 滚动到指定位置
-        scrollTo: function (x, y, time) {
+        scrollTo: function (x, y, time) {//定义了对象原型方法，将类.prototype抽取出来，方法以键值对的形式存储方法名，方法对应的匿名函数
             var self = this;
 
             if( time && time > 0 ){
