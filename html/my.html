@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="../assets/css/sl.css">
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/amazeui.js"></script>
+    <script src="../assets/js/myFirst.js"></script>
     <style>
 
     </style>
@@ -44,7 +45,7 @@
     <div class="am-u-sm-4 am-u-md-4 am-u-lg-4 sl-flex-row-center-center">
         <img src="../assets/images/car.png" alt="" style="height: 70%; width: 70%;" >
     </div>
-    <div class="am-u-sm-8 am-u-md-8 am-u-lg-8 sl-flex-column-flex-start-space-between sl-font-size-14px" style="height: 100%;">
+    <div class="am-u-sm-8 am-u-md-8 am-u-lg-8 sl-flex-column-flex-start-space-between " style="height: 100%;">
             <span class="sl-margin-bottom-5px"><span>姓名：</span>小明</span>
             <span><span>公司：</span>支付宝有限责任公司</span>
     </div>
@@ -62,6 +63,11 @@
 
 </body>
 <script>
+    //不同屏幕，文字的排版
+    $(document).ready(function () {
+        var rem = new Rem();
+        rem.adapterWidth_object();
+    });
     $(document).ready(function () {//document:是HTML DOM对象中的DOM Document对象，$(document):将DOM Document对象变成Jquery对象。.ready():jquery中的事件，当DOM载入就绪可以查询及操作一个要执行的函数。fn：要在DOM就绪时执行
                                         //的函数。
 

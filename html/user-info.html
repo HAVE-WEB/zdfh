@@ -33,6 +33,7 @@
     <!-- Amaze UI CSS -->
     <link rel="stylesheet" href="../assets/css/amazeui.css">
     <link rel="stylesheet" href="../assets/css/sl.css">
+    <link rel="stylesheet" href="../assets/css/plugin/mvalidate/validate.css">
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/amazeui.js"></script>
     <link rel="stylesheet" href="../assets/css/picker.css">
@@ -42,6 +43,7 @@
     <script src="../assets/js/data/hospitalOffice.js"></script>
     <script src="../assets/js/data/education.js"></script>
     <script src="../assets/js/myFirst.js"></script>
+    <script src="../assets/js/plugin/mvalidate/jquery-mvalidate.js"></script>
     <style>
         input:focus{
             outline: none;
@@ -74,29 +76,29 @@
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
             <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >
-                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>姓名:</span>
+                <i class="am-icon-asterisk  sl-icon-color-dd514c"></i><span>姓名:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请输入姓名"  required >
+                <input type="text" placeholder="请输入姓名"   name="userName" id="userName" data-required="true" data-descriptions="userName" >
             </div>
         </div>
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
             <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >
-                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>联系地址:</span>
+                <i class="am-icon-asterisk  sl-icon-color-dd514c"></i><span>联系地址:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择联系地址" onclick="pickerAddress()" name="address" id="address"  required data-validation-message="请选择联系地址">
+                <input type="text" placeholder="请选择联系地址" onclick="pickerAddress()" name="address" id="address" readonly  data-required="true" data-descriptions="address" >
             </div>
         </div>
 
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
             <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center sl-padding-0px" >
-                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>医院:</span>
+                <i class="am-icon-asterisk  sl-icon-color-dd514c"></i><span>医院:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 sl-flex-row-center-flex-start">
-                <input type="text" placeholder="请输入医院" name="hospital" style="width:70%" id="hospital" required>
+                <input type="text" placeholder="请输入医院" name="hospital" style="width:70%" id="hospital" data-required="true" data-descriptions="hospital">
                 <!--<a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px" href="hospitalSearch.html">选 择</a>-->
                 <a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px" id="goSearchPage">选 择</a>
             </div>
@@ -104,19 +106,19 @@
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
             <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >
-                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>等级:</span>
+                <i class="am-icon-asterisk  sl-icon-color-dd514c"></i><span>等级:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择等级" onclick="pickerHospitalLevel()" name="hospitalLevel" id="hospitalLevel"  required>
+                <input type="text" placeholder="请选择等级" onclick="pickerHospitalLevel()" name="hospitalLevel" id="hospitalLevel" readonly  data-required="true" data-descriptions="hospitalLevel">
             </div>
         </div>
 
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
             <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >
-                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>科室:</span>
+                <i class="am-icon-asterisk  sl-icon-color-dd514c"></i><span>科室:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择科室" onclick="pickerHospitalOffice()" name="hospitalOffice" id="hospitalOffice"  required>
+                <input type="text" placeholder="请选择科室" onclick="pickerHospitalOffice()" name="hospitalOffice" id="hospitalOffice"  readonly  data-required="true" data-descriptions="hospitalOffice">
             </div>
         </div>
 
@@ -142,18 +144,16 @@
             <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 sl-flex-row-center-center  sl-padding-0px" >
                 <span>品种:</span>
             </div>
-            <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <div class="">
-                    <label class="am-checkbox-inline">
-                        <input type="checkbox"  value="" data-am-ucheck> iPhone
-                    </label>
-                    <label class="am-checkbox-inline">
-                        <input type="checkbox"  value="" data-am-ucheck> iMac
-                    </label>
-                    <label class="am-checkbox-inline">
-                        <input type="checkbox"  value="" data-am-ucheck> Macbook
-                    </label>
-                </div>
+            <div class="am-form-group am-u-sm-9 am-u-md-9 am-u-lg-9 ">
+                <label class="am-checkbox-inline">
+                    <input type="checkbox" value="option1"> 选我
+                </label>
+                <label class="am-checkbox-inline">
+                    <input type="checkbox" value="option2"> 同时可以选我
+                </label>
+                <label class="am-checkbox-inline">
+                    <input type="checkbox" value="option3"> 还可以选我
+                </label>
             </div>
         </div>
 
@@ -286,6 +286,53 @@
 <!--</div>-->
 </body>
 <script>
+    //表单验证
+    $(function () {
+        $("#doc-valid-msg").mvalidate({
+            type:1,
+            onKeyup:true,
+            validateInSubmit:true,
+            sendForm:true,
+            firstInvalidFocus:false,
+            valid:function(event,options){
+                //点击提交按钮时,表单通过验证触发函数
+                //alert("验证通过！接下来可以做你想做的事情啦！");
+                //event.preventDefault();
+                history.back();
+            },
+            invalid:function(event, status, options){
+                //点击提交按钮时,表单未通过验证触发函数
+            },
+            eachField:function(event,status,options){
+                //点击提交按钮时,表单每个输入域触发这个函数 this 执向当前表单输入域，是jquery对象
+            },
+            eachValidField:function(val){},
+            eachInvalidField:function(event, status, options){},
+            conditional:{
+                confirmpwd:function(){
+                    return $("#pwd").val()==$("#confirmpwd").val();
+                }
+            },
+            descriptions:{
+                userName:{
+                    required : '请输入用户名'
+                },
+                address:{
+                    required : '请选择地址'
+                },
+                hospital : {
+                    required : '请输入或选择医院',
+                },
+                hospitalLevel:{
+                    required : '请选择登记'
+                },
+                hospitalOffice:{
+                    required : '请选择科室',
+                },
+
+            }
+        });
+    })
 //    window.onpopstate = function(event) {
 //        alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
 //    };
@@ -308,7 +355,6 @@
 //    })
     //不同屏幕，文字的排版
     $(document).ready(function () {
-//        Rem.adapterWidth_class();
         var rem = new Rem();
         rem.adapterWidth_object();
     });
@@ -415,20 +461,20 @@
 //        alert(111)
 //        location.replace("my.html");
 //    }
-    $("#user-Info-btn").on("click",function () {
-
-
-//        history.go(-1);
-        //location.replace("my.html");//这个为什么不行，因为在history的列表已经有了my.html的URL的值，所以不会跳转
-//        if($("#doc-valid-msg").valid){
-//            alert(1111);
-//            history.back();
-//        }
-        history.back();
-//        var stateObj = {foo:'bar'};
-//       history.replaceState(stateObj,'我的页面','my.html');
-        //alert(2222);
-    });
+//    $("#user-Info-btn").on("click",function () {
+//
+//
+////        history.go(-1);
+//        //location.replace("my.html");//这个为什么不行，因为在history的列表已经有了my.html的URL的值，所以不会跳转
+////        if($("#doc-valid-msg").valid){
+////            alert(1111);
+////            history.back();
+////        }
+//        history.back();
+////        var stateObj = {foo:'bar'};
+////       history.replaceState(stateObj,'我的页面','my.html');
+//        //alert(2222);
+//    });
 
 
     //选择按钮的click事件

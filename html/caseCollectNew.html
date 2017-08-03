@@ -33,6 +33,7 @@
     <!-- Amaze UI CSS -->
     <link rel="stylesheet" href="../assets/css/amazeui.css">
     <link rel="stylesheet" href="../assets/css/sl.css">
+    <link rel="stylesheet" href="../assets/css/plugin/mvalidate/validate.css">
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/amazeui.js"></script>
     <link rel="stylesheet" href="../assets/css/picker.css">
@@ -42,6 +43,7 @@
     <script src="../assets/js/data/hospitalLeave.js"></script>
     <script src="../assets/js/data/hospitalOffice.js"></script>
     <script src="../assets/js/data/education.js"></script>
+    <script src="../assets/js/plugin/mvalidate/jquery-mvalidate.js"></script>
     <!--<script src="../assets/js/upload/zyUpload.js"></script>
     <script src="../assets/js/upload/zyFile.js"></script>
     <script src="../assets/js/upload/jq22.js.js"></script>-->
@@ -59,7 +61,7 @@
 </head>
 <body>
 
-<form class="am-form ">
+<form class="am-form " id="case-collect">
     <fieldset>
 
         <div class="am-g sl-flex-row-center-center  sl-padding-0px">
@@ -75,7 +77,7 @@
                <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c" ></i><span>姓名:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text"  placeholder="请输入姓名"  required  >
+                <input type="text"  placeholder="请输入姓名" name="userName" id="userName" data-required="true" data-descriptions="userName">
             </div>
         </div>
 
@@ -84,7 +86,7 @@
                 <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>联系地址:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择联系地址" onclick="pickerAddress()" name="address" id="address"  required>
+                <input type="text" placeholder="请选择联系地址" onclick="pickerAddress()" name="address" id="address" readonly  data-required="true" data-descriptions="address" >
             </div>
         </div>
 
@@ -94,7 +96,7 @@
                 <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>医院:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 sl-flex-row-center-flex-start">
-                <input type="text" placeholder="请输入医院" name="hospital" style="width:70%" id="hospital" required>
+                <input type="text" placeholder="请输入医院" name="hospital" style="width:70%" id="hospital"   data-required="true" data-descriptions="hospital">
                 <!--<a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px " id="goSearchPage" href="hospitalSearch.html">选 择</a>-->
                 <a class="sl-margin-left-10px sl-background-color-FFCCCC sl-font-color-FF6666 sl-padding-2px-5px " id="goSearchPage" >选 择</a>
             </div>
@@ -105,7 +107,7 @@
                 <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>等级:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择等级" onclick="pickerHospitalLevel()" name="hospitalLevel" id="hospitalLevel" required>
+                <input type="text" placeholder="请选择等级" onclick="pickerHospitalLevel()" name="hospitalLevel" id="hospitalLevel" readonly data-required="true" data-descriptions="hospitalLevel">
             </div>
         </div>
 
@@ -114,7 +116,7 @@
                 <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i> <span>科室:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择科室" onclick="pickerHospitalOffice()" name="hospitalOffice" id="hospitalOffice" required>
+                <input type="text" placeholder="请选择科室" onclick="pickerHospitalOffice()" name="hospitalOffice" id="hospitalOffice" readonly  data-required="true" data-descriptions="hospitalOffice" >
             </div>
         </div>
 
@@ -134,7 +136,7 @@
                 <i class="am-icon-asterisk sl-font-size-12px sl-icon-color-dd514c"></i><span>品种:</span>
             </div>
             <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 ">
-                <input type="text" placeholder="请选择品种" onclick="pickerType()" name="type" id="type" required>
+                <input type="text" placeholder="请选择品种" onclick="pickerType()" name="type" id="type" readonly  data-required="true" data-descriptions="type" >
             </div>
         </div>
         <div class="am-g sl-flex-row-center-center sl-margin-top-10px">
@@ -176,12 +178,13 @@
 //        rem.adapterWidth_object();//对象方法
 
         Rem.adapterWidth_class();//类方法、
-        UI.share
+//        UI.share
 //        window.Picker.name
 //        Picker.FillData()
 //        window.Rem.adapterWidth
 //
     });
+
 
     var result = $("#result");
 //    if(typeof FileReader == 'undefined') {
@@ -351,8 +354,13 @@
             }
         });
     };
+
+    //点击确认按钮，验证表单域
     $("#button").click(function () {
-        history.back();
+//        var rem = new Rem();
+//        rem.alert_modal("密码不为空");
+//        $("#my-alert").modal();
+//        history.back();
 //        window.location.href="caseCollectList.html";
     })
     //选择按钮的click事件
@@ -368,7 +376,55 @@
             //self.location('hospitalSearch.html')
         }
     })
-
+    //jquery.validate.js插件验证
+    $(function () {
+        $("#case-collect").mvalidate({
+            type:1,
+            onKeyup:true,
+            validateInSubmit:true,
+            sendForm:true,
+            firstInvalidFocus:false,
+            valid:function(event,options){
+                //点击提交按钮时,表单通过验证触发函数
+                //alert("验证通过！接下来可以做你想做的事情啦！");
+                //event.preventDefault();
+                history.back();
+            },
+            invalid:function(event, status, options){
+                //点击提交按钮时,表单未通过验证触发函数
+            },
+            eachField:function(event,status,options){
+                //点击提交按钮时,表单每个输入域触发这个函数 this 执向当前表单输入域，是jquery对象
+            },
+            eachValidField:function(val){},
+            eachInvalidField:function(event, status, options){},
+            conditional:{
+                confirmpwd:function(){
+                    return $("#pwd").val()==$("#confirmpwd").val();
+                }
+            },
+            descriptions:{
+                userName:{
+                    required : '请输入用户名'
+                },
+                address:{
+                    required : '请选择地址'
+                },
+                hospital : {
+                    required : '请输入或选择医院',
+                },
+                hospitalLevel:{
+                    required : '请选择登记'
+                },
+                hospitalOffice:{
+                    required : '请选择科室',
+                },
+                type:{
+                    required : '请选择品种'
+                },
+            }
+        });
+    });
 
 
 

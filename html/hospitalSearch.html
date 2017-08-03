@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="../assets/css/sl.css">
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/amazeui.js"></script>
+    <script src="../assets/js/myFirst.js"></script>
     <style>
 
     </style>
@@ -79,6 +80,11 @@
 
 </body>
 <script>
+    //不同屏幕，文字的排版
+    $(document).ready(function () {
+        var rem = new Rem();
+        rem.adapterWidth_object();
+    });
     //显示和隐藏close按钮
     function inputVal() {
         console.log("start")
