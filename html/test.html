@@ -31,17 +31,23 @@
     <meta name="msapplication-TileColor" content="#0e90d2">
 
     <!-- Amaze UI CSS -->
-    <link rel="stylesheet" href="../assets/css/amazeui.css">
-    <link rel="stylesheet" href="../assets/css/sl.css">
+    <!--<link rel="stylesheet" href="../assets/css/amazeui.css">-->
+    <!--<link rel="stylesheet" href="../assets/css/sl.css">-->
     <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/amazeui.js"></script>
-    <link rel="stylesheet" href="../assets/css/picker.css">
-    <script src="../assets/js/picker.js"></script>
-    <script src="../assets/js/myFirst.js"></script>
-    <script src="../assets/js/data/city.js"></script>
-    <script src="../assets/js/data/hospitalLeave.js"></script>
-    <script src="../assets/js/data/hospitalOffice.js"></script>
-    <script src="../assets/js/data/education.js"></script>
+    <!--<script src="../assets/js/amazeui.js"></script>-->
+    <script src="../assets/js/require.js" ></script>
+    <script src="../assets/js/myLib.js"></script>
+    <!--<link rel="stylesheet" href="../assets/css/picker.css">-->
+    <!--<script src="../assets/js/picker.js"></script>-->
+    <!--<script src="../assets/js/myFirst.js"></script>-->
+    <!--<script src="../assets/js/data/city.js"></script>-->
+    <!--<script src="../assets/js/data/hospitalLeave.js"></script>-->
+    <!--<script src="../assets/js/data/hospitalOffice.js"></script>-->\
+    <!--<script src="../assets/js/myFirst.js"></script>-->
+    <!--<script src="../assets/js/data/education.js"></script>-->
+    <!--<script src="../assets/js/require.js" defer async="true" data-main="../assets/js/main.js"></script>-->
+    <!--<script src="../assets/js/main.js" ></script>-->
+    <script src="../assets/js/require.js" ></script>
     <style>
         #box{
             width:50px;
@@ -53,49 +59,23 @@
         }
     </style>
 </head>
-<script src="../assets/js/myFirst.js"></script>
+
 <body>
+<!--<script>-->
+    <!--var out = new Out("这个你三");-->
+    <!--console.log(out.back());-->
+<!--</script>-->
 <script>
-    var out = new Out("这个你三");
-    console.log(out.back());
-</script>
-<div class="am-alert" data-am-alert>
-    <button type="button" class="am-close">&times;</button>
-    ...
-</div>
-<script>
-</script>
-
-
-<div class="am-alert" data-am-alert>
-    <button type="button" class="am-close">&times;</button>
-    <h3>共同渡过</h3>
-    <p>《共同渡过》是张国荣1987年发行的专辑《Summer Romance》中的一首歌。</p>
-    <ul>
-        <li>若我可再活多一次都盼</li>
-        <li>再可以在路途重逢着你</li>
-        <li>共去写一生的句子</li>
-        <li>若我可再活多一次千次</li>
-        <li>我都盼面前仍是你</li>
-        <li>我要他生都有今生的暖意</li>
-    </ul>
-</div>
-
-<div class="am-alert" id="your-alert">
-    <button type="button" class="am-close">&times;</button>
-    <p>在应用 JS 激活之前这个警告框是无法关闭的。不信点右边的 x 试试。</p>
-</div>
-<button type="button" class="am-btn am-btn-danger" id="doc-alert-btn-bind">点击激活上面 Alert 的关闭功能</button>
-<script>
-    $(function() {
-        $('#doc-alert-btn-bind').one('click', function() {
-            $('#your-alert').alert();
-            alert('已激活，点击上的 X 试试！');
-        });
-    });
+    $(function () {
+        var l = require('/assets/js/myLib.js');
+        console.log(l.x);
+        console.log(l.addX(1));
+    })
 </script>
 
-<button class="am-btn am-btn-primary" data-am-popover="{content: '鄙是点击显示的 Popover'}">点击显示 Popover</button>
+
+
+
 
 
 </body>
