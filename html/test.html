@@ -31,55 +31,104 @@
     <meta name="msapplication-TileColor" content="#0e90d2">
 
     <!-- Amaze UI CSS -->
-    <!--<link rel="stylesheet" href="../assets/css/amazeui.css">-->
-    <!--<link rel="stylesheet" href="../assets/css/sl.css">-->
+    <link rel="stylesheet" href="../assets/css/amazeui.css">
+    <link rel="stylesheet" href="../assets/css/sl.css">
     <script src="../assets/js/jquery.min.js"></script>
-    <!--<script src="../assets/js/amazeui.js"></script>-->
-    <script src="../assets/js/require.js" ></script>
-    <script src="../assets/js/myLib.js"></script>
-    <!--<link rel="stylesheet" href="../assets/css/picker.css">-->
-    <!--<script src="../assets/js/picker.js"></script>-->
-    <!--<script src="../assets/js/myFirst.js"></script>-->
-    <!--<script src="../assets/js/data/city.js"></script>-->
-    <!--<script src="../assets/js/data/hospitalLeave.js"></script>-->
-    <!--<script src="../assets/js/data/hospitalOffice.js"></script>-->\
-    <!--<script src="../assets/js/myFirst.js"></script>-->
-    <!--<script src="../assets/js/data/education.js"></script>-->
-    <!--<script src="../assets/js/require.js" defer async="true" data-main="../assets/js/main.js"></script>-->
-    <!--<script src="../assets/js/main.js" ></script>-->
-    <script src="../assets/js/require.js" ></script>
+    <script src="../assets/js/amazeui.js"></script>
+    <link rel="stylesheet" href="../assets/css/picker.css">
+    <script src="../assets/js/picker.js"></script>
+    <script src="../assets/js/myFirst.js"></script>
+    <script src="../assets/js/data/city.js"></script>
+    <script src="../assets/js/data/hospitalLeave.js"></script>
+    <script src="../assets/js/data/hospitalOffice.js"></script>
+    <script src="../assets/js/data/education.js"></script>
     <style>
-        #box{
-            width:50px;
-            height: 50px;
-            background-color: #1b961b;
+        #div{
+
+            /*background: linear-gradient(to bottom left,blue,yellow,black);*//*使用top, bottom ,left, right来确定颜色渐变的方向*/
+            /*background: linear-gradient(-160deg ,red,blue);!*使用角度去确定方向*!*/
+            /*background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));使用透明度*/
+            /*background: repeating-linear-gradient( to right,red, yellow 50% , green 30%);重复的线性渐变*/
+            /*background: -webkit-radial-gradient(circle,red , green, blue );*/
+            /*background: radial-gradient(60% 50% ,closest-side,green, blue,black);*/
+            /*transform:translate(50px,100px) ;*/
         }
-        #box:active{
-            background-color: red;
+        
+        #div1{
+
+            /*background: radial-gradient(red,blue);*/
         }
     </style>
 </head>
-
+<script src="../assets/js/myFirst.js"></script>
 <body>
-<!--<script>-->
-    <!--var out = new Out("这个你三");-->
-    <!--console.log(out.back());-->
-<!--</script>-->
-<script>
-    $(function () {
-        var l = require('/assets/js/myLib.js');
-        console.log(l.x);
-        console.log(l.addX(1));
-    })
-</script>
 
+<div style="width: 200px;height: 200px; border-bottom: 50px solid green; background-color: red" id="div" ></div>
 
-
-
+<!--<div style="width: 50px;height: 50px;" id="div1"></div>-->
 
 
 </body>
 <script>
+    $(document).ready(function () {
+        var hWindow = window.innerHeight;
+        var wWindow= window.innerWidth;
+
+        var hDiv = $("#div").outerHeight();
+        var wDiv = $("#div").outerWidth();
+//        console.log("W:"+hWindow+"div:"+hDiv)
+        var i =0;
+        var j =0;
+        var state =  0;
+         var timer1=setInterval(function () {
+            var count = 100;
+             var hNow = $("#div").offset().top;
+             var wNow = $("#div").offset().left;
+             var num = parseInt(Math.random()*10)%2;
+             if(num == 1){
+                 if(state == 0){
+                     i=compare(hNow,hDiv);
+                 }else if(state == 1){
+                     i=compare(wNow,wDiv);
+                 }else if(state == 2){
+
+                 }else{
+
+                 }
+             }else {
+                 i = 1;
+             }
+             if(state == 0){
+                 if(hWindow-hNow-hDiv < hDiv){
+                     $("#div").css("transform","translate(0px,"+(hWindow-hDiv)+"px)");
+                     state = 1;
+                     i=0;
+                 }else{
+                     $("#div").css("transform","translate(0px,"+(hNow+count*i)+"px)");
+                 }
+             }else if(state == 1){
+                 if(wWindow-wNow-wDiv < wDiv){
+                     $("#div").css("transform","translate("+(wWindow-wDiv)+"px,"+hNow+"px)");
+                     state =2;
+                     i=0;
+                     clearInterval(timer1);
+                 }else{
+                     $("#div").css("transform","translate("+(wNow+count*i)+"px,"+hNow+"px)");
+                 }
+             }else if(state == 2){
+             }
+        },500);
+
+    });
+    //判断2个值大小
+    function compare(num1, num2){
+        if(num1 < num2){
+            return 1;
+        }else{
+            return -1;
+        }
+    }
+
 //    $(function() {
 //        $('#doc-vld-msg').validate({
 //            onValid: function(validity) {
